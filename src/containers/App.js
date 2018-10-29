@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
-  // Switch,
   Route,
-  NavLink,
   Redirect,
   withRouter,
 } from 'react-router-dom';
@@ -30,12 +28,11 @@ class App extends Component {
             !isAuth ? (
               <Redirect to="/auth" />
             ) : (
-              <Redirect to="/mainpage"  />
+              <Redirect to="/mainpage" />
             )
           )} />
-          <Route path="/mainpage" component={MainPage} />
-
-
+          <Route exact path="/auth" component={AuthPage}/>
+          <Route exact path="/mainpage" component={MainPage}/>
         </div>
       </Router>
     );

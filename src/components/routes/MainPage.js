@@ -1,8 +1,8 @@
-import React, { Components } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../../containers/Header';
 
-class MainPage extends Components {
+class MainPage extends Component {
   render() {
     return(
       <div>
@@ -11,9 +11,11 @@ class MainPage extends Components {
       </div>
     )
   }
-}
+};
 
 export default connect(
-  store => ({}),
-  dispatch => ({}),
-)(MainPage);
+  store => ({
+    isAuth: store.loginForm.isAuth,
+  }),
+  dispatch =>({})
+)(MainPage)

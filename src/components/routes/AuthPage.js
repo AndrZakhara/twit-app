@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
-// import Header from "../../containers/Header";
+import Header from "../../containers/Header";
 
 class AuthPage extends Component {
   render() {
@@ -14,6 +14,8 @@ class AuthPage extends Component {
     console.log(isAuth);
     return(
         <div>
+          <Header />
+          <h2>Auth Page</h2>
           <Route path="/auth/login" component={LoginPage} />
           <Route path="/auth/signup" component={RegisterPage} />
         </div>
