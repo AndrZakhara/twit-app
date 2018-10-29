@@ -7,11 +7,11 @@ class RegisterPage extends Component {
   // };
 
   render() {
-    const {handleSubmit} = this.props;
+    const {onSubmit} = this.props;
     return (
       <div>
         <h2>Sign Up</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <div>
             <label>Name</label>
             <Field name="name" component="input" />
@@ -30,5 +30,5 @@ class RegisterPage extends Component {
 }
 
 export default reduxForm({
-  form: 'auth',
+  form: 'registerForm',
 })(RegisterPage)

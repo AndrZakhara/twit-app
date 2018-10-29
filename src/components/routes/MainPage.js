@@ -15,7 +15,7 @@ class MainPage extends Component {
 
 export default connect(
   store => ({
-    isAuth: store.loginForm.isAuth,
+    isAuth: store.authForm.isAuth,
   }),
   dispatch =>({})
 )(MainPage)

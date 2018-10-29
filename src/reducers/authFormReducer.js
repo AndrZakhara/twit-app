@@ -3,19 +3,16 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  ENTRY_TYPE_LOGIN,
-  ENTRY_TYPE_SIGNUP,
 } from '../actions/authActions';
 
 const initialState = {
   userName: 'Unknown User',
   isFetching: false,
-  isAuth: true,
+  isAuth: false,
   error: '',
-  entryType: '',
 };
 
-export function loginFormReducer(state = initialState, action) {
+export function authFormReducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN_REQUEST:
       return { ...state, isFetching: true, error: '' };
@@ -26,20 +23,20 @@ export function loginFormReducer(state = initialState, action) {
         isFetching: false,
         userName: action.payload.username,
         isAuth: true,
-        entryType: '',
       };
 
     case LOGIN_FAIL:
       return { ...state, isFetching: false, error: action.payload.message };
 
     case LOGOUT:
+      console.log('reducer logout')
       return { ...state, isAuth: false };
 
-    case ENTRY_TYPE_LOGIN:
-      return { ...state, entryType: 'login' };
-
-    case ENTRY_TYPE_SIGNUP:
-      return { ...state, entryType: 'signUp' };
+    // case ENTRY_TYPE_LOGIN:
+    //   return { ...state, entryType: 'login' };
+    //
+    // case ENTRY_TYPE_SIGNUP:
+    //   return { ...state, entryType: 'signUp' };
 
     default:
       return state;

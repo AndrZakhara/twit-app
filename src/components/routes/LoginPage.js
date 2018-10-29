@@ -7,11 +7,13 @@ class LoginPage extends Component {
   // };
 
   render() {
-    const {handleSubmit} = this.props;
+    console.log('login page: ')
+    console.log(this.props);
+    const { onSubmit } = this.props;
     return (
       <div>
         <h2>Log In</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <div>
             <label>Name</label>
             <Field name="name" component="input" />
@@ -30,5 +32,5 @@ class LoginPage extends Component {
 }
 
 export default reduxForm({
-  form: 'auth',
+  form: 'loginForm',
 })(LoginPage)
