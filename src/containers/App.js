@@ -9,6 +9,9 @@ import {
 
 import AuthPage from '../components/routes/AuthPage';
 import MainPage from '../components/routes/MainPage';
+import PostPage from "../components/routes/PostPage";
+import AuthorsPage from "../components/routes/AuthorsPage";
+import MyPage from "../components/routes/MyPage";
 
 
 class App extends Component {
@@ -25,11 +28,14 @@ class App extends Component {
             !isAuth ? (
               <Redirect to="/auth" />
             ) : (
-              <Redirect to="/mainpage" />
+              <Redirect to="/main" />
             )
           )} />
           <Route exact path="/auth" component={AuthPage} />
-          <Route exact path="/mainpage" component={MainPage} />
+          <Route exact path="/main" component={MainPage} />
+          <Route exact path="/posts" component={PostPage} />
+          <Route exact path="/author" component={AuthorsPage} />
+          <Route exact path="/mypage" component={MyPage} />
         </div>
       </Router>
     );
