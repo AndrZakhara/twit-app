@@ -29,8 +29,9 @@ export function authFormReducer(state = initialState, action) {
       return { ...state, isFetching: false, error: action.payload.message };
 
     case LOGOUT:
-      console.log('reducer logout')
-      return { ...state, isAuth: false };
+      console.log('reducer logout');
+      console.log(action.payload.status);
+      return { ...state, isAuth: action.payload.status };
 
     // case ENTRY_TYPE_LOGIN:
     //   return { ...state, entryType: 'login' };

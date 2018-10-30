@@ -81,14 +81,14 @@ const logout = () => ({
   type: LOGOUT,
 });
 
-export function handleLogout() {
+export function handleLogout(e) {
+  e.preventDefault();
   console.log('clik');
+  axios.defaults.headers.common = {};
+  localStorage.removeItem('cks_token');
 
-  // return (dispatch) => {
-    axios.defaults.headers.common = {};
-    localStorage.removeItem('cks_token');
-    return logout();
-  // };
-  // return { type: LOGOUT };
+  return { type: LOGOUT,
+    payload: {status: false}
+  };
 }
 
