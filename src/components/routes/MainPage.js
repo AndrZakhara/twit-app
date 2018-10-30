@@ -8,14 +8,23 @@ import {
 import Header from '../../containers/Header';
 import Categories from '../Categories';
 import Posts from '../Posts';
-import { getCategories } from '../../actions/mainPageActions';
+import { getAllCategories, getAllPosts } from '../../actions/mainPageActions';
 
 class MainPage extends Component {
+  constructor(props) {
+
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.getCategoriesHandler();
+    this.props.getPostsHandler();
+  }
 
   render() {
     console.log('Main page: ');
     console.log(this.props)
-    const { getCategoriesHandler } = this.props;
+
     return(
       <div>
         <Header />
@@ -39,11 +48,7 @@ class MainPage extends Component {
         <h4>Content</h4>
         <Categories />
         <Posts />
-        <button
-          onClick={getCategoriesHandler}
-        >
           Get categories
-        </button>
       </div>
     )
   }
@@ -52,6 +57,7 @@ class MainPage extends Component {
 export default connect(
   store => store,
   dispatch =>({
-    getCategoriesHandler: (e) => dispatch(getCategories(e)),
+    getCategoriesHandler: () => dispatch(getAllCategories()),
+    getPostsHandler: () => dispatch(getAllPosts()),
   })
 )(MainPage)
