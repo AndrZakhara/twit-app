@@ -7,8 +7,6 @@ class LoginPage extends Component {
   // };
 
   render() {
-    console.log('login page: ')
-    console.log(this.props);
     const { onSubmit } = this.props;
     return (
       <div>

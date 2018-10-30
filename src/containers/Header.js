@@ -21,15 +21,11 @@ class Header extends Component {
       </div>
     );
   }
-
-
 }
 
 Header.propTypes = {
 
 };
-
-
 
 export default connect(
   store => ({

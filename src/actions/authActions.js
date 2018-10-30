@@ -4,9 +4,9 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 
-export const REGISTRY_REQUEST = 'REGISTRY_REQUEST';
-export const REGISTRY_SUCCESS = 'REGISTRY_SUCCESS';
-export const REGISTRY_FAIL = 'REGISTRY_FAIL';
+export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_FAIL = 'SIGNUP_FAIL';
 
 export const LOGOUT = 'LOGOUT';
 
@@ -53,14 +53,14 @@ export function handleSignUp(form) {
 
   return (dispatch) => {
     dispatch({
-      type: LOGIN_REQUEST,
+      type: SIGNUP_REQUEST,
     });
 
     axios.post('/auth', user)
       .then((response) => {
         console.log(response);
         dispatch({
-          type: LOGIN_SUCCESS,
+          type: SIGNUP_SUCCESS,
           payload: {
             username: user.login,
           },
@@ -70,25 +70,21 @@ export function handleSignUp(form) {
       .catch((error) => {
         console.log(error);
         dispatch({
-          type: LOGIN_FAIL,
+          type: SIGNUP_FAIL,
           error: true,
-          payload: new Error('Authorization error'),
+          payload: new Error('Registration error'),
         });
       });
   };
 }
-const logout = () => ({
-  type: LOGOUT,
-});
 
 export function handleLogout(e) {
   e.preventDefault();
-  console.log('clik');
   axios.defaults.headers.common = {};
   localStorage.removeItem('cks_token');
 
   return { type: LOGOUT,
-    payload: {status: false}
+    payload: {status: false},
   };
 }
 
