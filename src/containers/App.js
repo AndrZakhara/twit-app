@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
   withRouter,
+  Switch,
 } from 'react-router-dom';
 
 import AuthPage from '../components/routes/AuthPage';
@@ -24,18 +25,21 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/*" render={()=>(
-            !isAuth ? (
-              <Redirect to="/auth" />
-            ) : (
-              <Redirect to="/main" />
-            )
-          )} />
-          <Route exact path="/auth" component={AuthPage} />
-          <Route exact path="/main" component={MainPage} />
-          <Route exact path="/posts" component={PostPage} />
-          <Route exact path="/author" component={AuthorsPage} />
-          <Route exact path="/mypage" component={MyPage} />
+
+            <Route exact path="/*" render={()=>(
+              !isAuth ? (
+                <Redirect to="/auth" />
+              ) : (
+                <Redirect to="/main" />
+              )
+            )} />
+            <Switch>
+            <Route exact path="/auth" component={AuthPage} />
+            <Route exact path="/main" component={MainPage} />
+            <Route exact path="/posts" component={PostPage} />
+            <Route exact path="/author" component={AuthorsPage} />
+            <Route exact path="/mypage" component={MyPage} />
+          </Switch>
         </div>
       </Router>
     );

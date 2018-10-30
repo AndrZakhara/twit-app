@@ -6,13 +6,16 @@ import {
   Route,
 } from 'react-router-dom';
 import Header from '../../containers/Header';
-// import MainPage from './MainPage';
-import PostPage from './PostPage';
-import AuthorsPage from './AuthorsPage';
-import MyPage from './MyPage';
+import Categories from '../Categories';
+import Posts from '../Posts';
+import { getCategories } from '../../actions/mainPageActions';
 
-export default class MainPage extends Component {
+class MainPage extends Component {
+
   render() {
+    console.log('Main page: ');
+    console.log(this.props)
+    const { getCategoriesHandler } = this.props;
     return(
       <div>
         <Header />
@@ -34,14 +37,21 @@ export default class MainPage extends Component {
         </ul>
         <hr/>
         <h4>Content</h4>
+        <Categories />
+        <Posts />
+        <button
+          onClick={getCategoriesHandler}
+        >
+          Get categories
+        </button>
       </div>
     )
   }
 };
 
-// export default connect(
-//   store => ({
-//     isAuth: store.authForm.isAuth,
-//   }),
-//   dispatch =>({})
-// )(MainPage)
+export default connect(
+  store => store,
+  dispatch =>({
+    getCategoriesHandler: (e) => dispatch(getCategories(e)),
+  })
+)(MainPage)
