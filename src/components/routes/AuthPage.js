@@ -14,7 +14,8 @@ class AuthPage extends Component {
   render() {
     const {
       isAuth,
-      handleLogin
+      handleLogin,
+      handleSignUp
     } = this.props;
     console.log(isAuth);
     return(

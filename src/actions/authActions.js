@@ -83,8 +83,8 @@ export function handleLogout(e) {
   axios.defaults.headers.common = {};
   localStorage.removeItem('cks_token');
 
-  return { type: LOGOUT,
-    payload: {status: false},
+  return {
+    type: LOGOUT,
+    payload: { status: false },
   };
 }
-
