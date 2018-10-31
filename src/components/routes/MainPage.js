@@ -43,9 +43,13 @@ class MainPage extends Component {
         </ul>
         <hr/>
         <h4>Content</h4>
-        <CategoriesList
-          categories={categories}
-        />
+        <div>
+          <h4>Categories:</h4>
+          <CategoriesList
+            categories={categories}
+          />
+        </div>
+
         <PostsList />
           Get categories
       </div>
