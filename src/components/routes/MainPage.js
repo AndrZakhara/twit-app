@@ -7,6 +7,7 @@ import Header from '../../containers/Header';
 import CategoriesList from '../CategoriesList';
 import PostsList from '../PostsList';
 import { getAllCategories, getAllPosts } from '../../actions/mainPageActions';
+import { getFilteredPostsList } from '../../selectors/getFilteredPostsList';
 
 class MainPage extends Component {
 
@@ -64,7 +65,9 @@ class MainPage extends Component {
 export default connect(
   store => ({
     categories: store.mainPage.categories,
-    posts: store.mainPage.posts,
+    // posts: store.mainPage.posts,
+    posts: getFilteredPostsList(store),
+
   }),
   dispatch =>({
     getCategoriesHandler: () => dispatch(getAllCategories()),

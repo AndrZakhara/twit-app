@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-// import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { Switch, Route, NavLink, Redirect } from 'react-router-dom';
 import UnregisterUser from '../components/UnRegisterUser';
 import RegisterUser from '../components/RegisterUser';
 

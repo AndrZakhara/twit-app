@@ -10,6 +10,7 @@ import {
 const initialState = {
   categories: [],
   posts: [],
+  activeCategoryId: '',
 };
 
 export function mainPageReducer(state = initialState, action) {

@@ -1,6 +1,5 @@
 import React from 'react';
 import PostItem from './PostItem';
-import CategoryItem from "./CategoryItem";
 
 export default function PostsList(props) {
   const {posts} = props;
