@@ -1,11 +1,14 @@
 import React from 'react';
 
 export default function CategoryItem(props) {
-  const { category } = props;
+  const {
+    category,
+    getCategoriesId,
+  } = props;
 
   return(
     <div>
-      <span>{category.title}</span>
+      <span onClick={() => getCategoriesId(category.id)}>{category.title}</span>
     </div>
   );
 }

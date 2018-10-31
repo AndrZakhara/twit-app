@@ -2,6 +2,7 @@ import {
   CATEGORIES_REQUEST,
   CATEGORIES_FETCH,
   CATEGORIES_ERROR,
+  CATEGORIES_GET_ID,
   POST_REQUEST,
   POST_FETCH,
   POST_ERROR,
@@ -24,6 +25,9 @@ export function mainPageReducer(state = initialState, action) {
 
     case CATEGORIES_ERROR:
       return {...state};
+
+    case CATEGORIES_GET_ID:
+      return {...state, activeCategoryId: action.payload.id};
 
     case POST_REQUEST:
       return {...state};

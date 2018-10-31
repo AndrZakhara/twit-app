@@ -8,6 +8,8 @@ export const POST_REQUEST = 'POST_REQUEST';
 export const POST_FETCH = 'POST_FETCH';
 export const POST_ERROR = 'POST_ERROR';
 
+export const CATEGORIES_GET_ID = 'CATEGORIES_GET_ID';
+
 export function getAllCategories() {
 
   return (dispatch) => {
@@ -40,4 +42,11 @@ export function getAllPosts() {
         });
       });
   };
+}
+
+export function getCategoriesId(id) {
+  return ({
+    type: CATEGORIES_GET_ID,
+    payload: {id},
+  });
 }

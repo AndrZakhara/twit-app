@@ -6,7 +6,7 @@ import {
 import Header from '../../containers/Header';
 import CategoriesList from '../CategoriesList';
 import PostsList from '../PostsList';
-import { getAllCategories, getAllPosts } from '../../actions/mainPageActions';
+import { getAllCategories, getAllPosts, getCategoriesId } from '../../actions/mainPageActions';
 import { getFilteredPostsList } from '../../selectors/getFilteredPostsList';
 
 class MainPage extends Component {
@@ -20,6 +20,7 @@ class MainPage extends Component {
     const {
       categories,
       posts,
+      getCategoriesId
     } = this.props;
     console.log('Main page: ');
     console.log(this.props);
@@ -49,6 +50,7 @@ class MainPage extends Component {
           <h4>Categories:</h4>
           <CategoriesList
             categories={categories}
+            getCategoriesId={getCategoriesId}
           />
         </div>
         <div>
@@ -59,18 +61,18 @@ class MainPage extends Component {
         </div>
       </div>
     );
-  }
+  }s
 }
 
 export default connect(
   store => ({
     categories: store.mainPage.categories,
-    // posts: store.mainPage.posts,
     posts: getFilteredPostsList(store),
 
   }),
   dispatch =>({
     getCategoriesHandler: () => dispatch(getAllCategories()),
     getPostsHandler: () => dispatch(getAllPosts()),
+    getCategoriesId: (id) => dispatch(getCategoriesId(id))
   }),
 )(MainPage);
