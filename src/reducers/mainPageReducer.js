@@ -28,7 +28,7 @@ export function mainPageReducer(state = initialState, action) {
       return {...state};
 
     case POST_FETCH:
-      return {...state, post: action.payload.allPost};
+      return {...state, posts: action.payload.allPost};
 
     case POST_ERROR:
       return {...state};

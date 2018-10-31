@@ -88,3 +88,29 @@ export function handleLogout(e) {
     payload: { status: false },
   };
 }
+
+export function getUser() {
+  return (dispatch) => {
+    dispatch({
+      type: LOGIN_REQUEST,
+    });
+
+    axios.get('/user')
+      .then((response) => {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: {
+            username: response.data.login,
+          },
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        dispatch({
+          type: LOGIN_FAIL,
+          error: true,
+          payload: new Error('Authorization error'),
+        });
+      });
+  };
+}

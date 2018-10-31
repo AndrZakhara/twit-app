@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Switch, Route, NavLink, Redirect } from 'react-router-dom';
+// import { Switch, Route, NavLink, Redirect } from 'react-router-dom';
 import UnregisterUser from '../components/UnRegisterUser';
 import RegisterUser from '../components/RegisterUser';
 
@@ -9,14 +9,15 @@ class Header extends Component {
 
   render() {
     const {
-      isAuth
+      isAuth,
+      username
     } = this.props;
 
     return (
       <div>
         <h2>Social App</h2>
         <br />
-        {!isAuth ? <UnregisterUser /> : <RegisterUser />}
+        {!isAuth ? <UnregisterUser /> : <RegisterUser username={username}/>}
         <hr />
       </div>
     );

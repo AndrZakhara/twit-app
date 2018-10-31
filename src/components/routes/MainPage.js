@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  BrowserRouter as Router,
   NavLink,
-  Route,
 } from 'react-router-dom';
 import Header from '../../containers/Header';
-import Categories from '../Categories';
-import Posts from '../Posts';
+import CategoriesList from '../CategoriesList';
+import PostsList from '../PostsList';
 import { getAllCategories, getAllPosts } from '../../actions/mainPageActions';
 
 class MainPage extends Component {
-  constructor(props) {
-
-    super(props);
-  }
 
   componentDidMount() {
     this.props.getCategoriesHandler();
@@ -22,8 +16,11 @@ class MainPage extends Component {
   }
 
   render() {
+    const {
+      categories,
+    } = this.props;
     console.log('Main page: ');
-    console.log(this.props)
+    console.log(this.props);
 
     return(
       <div>
@@ -46,18 +43,23 @@ class MainPage extends Component {
         </ul>
         <hr/>
         <h4>Content</h4>
-        <Categories />
-        <Posts />
+        <CategoriesList
+          categories={categories}
+        />
+        <PostsList />
           Get categories
       </div>
-    )
+    );
   }
-};
+}
 
 export default connect(
-  store => store,
+  store => ({
+    categories: store.mainPage.categories,
+    posts: store.mainPage.posts,
+  }),
   dispatch =>({
     getCategoriesHandler: () => dispatch(getAllCategories()),
     getPostsHandler: () => dispatch(getAllPosts()),
-  })
-)(MainPage)
+  }),
+)(MainPage);

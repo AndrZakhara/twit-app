@@ -33,7 +33,7 @@ export function getAllPosts() {
     });
     axios.get('/post')
       .then((response) => {
-        const allPost = response.data.posts;
+        const allPost = response.data.data;
         dispatch({
           type: POST_FETCH,
           payload: { allPost },

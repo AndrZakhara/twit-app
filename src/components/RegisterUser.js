@@ -6,10 +6,14 @@ import { handleLogout } from '../actions/authActions';
 class RegisterUser extends Component {
 
   render() {
-    const { handleClick } = this.props;
+    const {
+      handleClick,
+      username,
+    } = this.props;
 
     return (
       <div>
+        <h4>{username}</h4>
         <NavLink
           to="/auth"
           onClick={handleClick}
