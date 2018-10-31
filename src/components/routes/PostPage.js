@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import Header from '../../containers/Header';
-import {NavLink} from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import PostItemById from '../PostItemByID';
+import { connect } from 'react-redux/';
+import { getPostById } from '../../actions/postPageActions';
 
 class PostPage extends Component {
+  componentDidMount() {
+    this.props.getPostById(this.props.currentPostId);
+  }
+
   render() {
+    const {
+      currentPost,
+    } = this.props;
+
     return(
       <div>
         <Header />
@@ -25,9 +36,20 @@ class PostPage extends Component {
         </ul>
         <hr/>
         <h4>content</h4>
+        <PostItemById
+          post={currentPost}
+        />
       </div>
-    )
+    );
   }
 }
 
-export default PostPage
+export default connect(
+  store => ({
+    currentPostId: store.mainPage.activePostId,
+    currentPost: store.postPage.currentPost,
+  }),
+  dispatch =>({
+    getPostById: id => dispatch(getPostById(id)),
+  }),
+)(PostPage);

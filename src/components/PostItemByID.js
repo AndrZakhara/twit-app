@@ -1,13 +1,12 @@
 import React from 'react';
 
-export default function PostItem(props) {
+export default function PostItemById(props) {
   const {
     post,
-    getPostId,
   } = props;
 
   return(
-    <div onClick={()=>getPostId(post.id)}>
+    <div>
       <h4>{post.title}</h4>
       <p>{post.body}</p>
     </div>
