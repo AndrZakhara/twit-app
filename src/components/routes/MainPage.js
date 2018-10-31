@@ -18,6 +18,7 @@ class MainPage extends Component {
   render() {
     const {
       categories,
+      posts,
     } = this.props;
     console.log('Main page: ');
     console.log(this.props);
@@ -49,9 +50,12 @@ class MainPage extends Component {
             categories={categories}
           />
         </div>
-
-        <PostsList />
-          Get categories
+        <div>
+          <h4>Posts:</h4>
+          <PostsList
+            posts={posts}
+          />
+        </div>
       </div>
     );
   }
