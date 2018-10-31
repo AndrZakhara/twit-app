@@ -6,12 +6,14 @@ import {
   POST_REQUEST,
   POST_FETCH,
   POST_ERROR,
+  POST_GET_ID,
 } from '../actions/mainPageActions';
 
 const initialState = {
   categories: [],
   posts: [],
   activeCategoryId: '',
+  activePostId: '',
 };
 
 export function mainPageReducer(state = initialState, action) {
@@ -37,6 +39,9 @@ export function mainPageReducer(state = initialState, action) {
 
     case POST_ERROR:
       return {...state};
+
+    case POST_GET_ID:
+      return {...state, activePostId: action.payload.id};
 
     default:
       return state;

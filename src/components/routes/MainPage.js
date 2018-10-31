@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  NavLink,
-} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Header from '../../containers/Header';
 import CategoriesList from '../CategoriesList';
 import PostsList from '../PostsList';
-import { getAllCategories, getAllPosts, getCategoriesId } from '../../actions/mainPageActions';
+import {
+  getAllCategories,
+  getAllPosts,
+  getCategoriesId,
+  getPostId,
+} from '../../actions/mainPageActions';
 import { getFilteredPostsList } from '../../selectors/getFilteredPostsList';
 
 class MainPage extends Component {
@@ -20,10 +23,9 @@ class MainPage extends Component {
     const {
       categories,
       posts,
-      getCategoriesId
+      getCategoriesId,
+      getPostId,
     } = this.props;
-    console.log('Main page: ');
-    console.log(this.props);
 
     return(
       <div>
@@ -57,6 +59,7 @@ class MainPage extends Component {
           <h4>Posts:</h4>
           <PostsList
             posts={posts}
+            getPostId={getPostId}
           />
         </div>
       </div>
@@ -73,6 +76,7 @@ export default connect(
   dispatch =>({
     getCategoriesHandler: () => dispatch(getAllCategories()),
     getPostsHandler: () => dispatch(getAllPosts()),
-    getCategoriesId: (id) => dispatch(getCategoriesId(id))
+    getCategoriesId: id => dispatch(getCategoriesId(id)),
+    getPostId: (id => dispatch(getPostId(id)))
   }),
 )(MainPage);

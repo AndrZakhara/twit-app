@@ -6,18 +6,15 @@ export default function CategoriesList(props) {
     categories,
     getCategoriesId,
   } = props;
-  console.log('categories');
-  console.log(categories);
-  console.log(categories[0]);
 
   const category = categories.map((item) => {
+
     return (
       <li>
         <CategoryItem
           key={item.id}
           category={item}
           getCategoriesId={getCategoriesId}
-
         />
       </li>
     );

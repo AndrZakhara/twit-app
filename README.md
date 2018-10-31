@@ -1,20 +1,20 @@
 Blog application: 
 
 Pages: 
-- Login Page
-- Register Page
-- Main Page (all posts from all the authors all categories)
++ - Login Page
++ - Register Page
++ - Main Page (all posts from all the authors all categories)
 - Post Page (with/without comments)
 - Author’s page(with posts only from this author)
 - My Page(with ability to write new post)
 
-As a layout all pages should have common header component,
-which will have two states(whether user is authorized or not)
-in first state it will have only 2 navigation links (Login, Register),
++ As a layout all pages should have common header component,
++ which will have two states(whether user is authorized or not)
++ in first state it will have only 2 navigation links (Login, Register),
 in second state we will have 3 navlinks (Main, My Account, Logout)
 
-Main page should display all the categories and posts. By clicking on a
-category posts should be filtered to display only posts of a selected category.
++ Main page should display all the categories and posts. By clicking on a
++ category posts should be filtered to display only posts of a selected category.
 
 Post page should display a full post and all the comments to it + textarea for a new
 comment with button ‘post a comment’. If there are any comments left by this user - user should

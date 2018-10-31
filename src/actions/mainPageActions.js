@@ -7,6 +7,7 @@ export const CATEGORIES_ERROR = 'CATEGORIES_ERROR';
 export const POST_REQUEST = 'POST_REQUEST';
 export const POST_FETCH = 'POST_FETCH';
 export const POST_ERROR = 'POST_ERROR';
+export const POST_GET_ID = 'POST_GET_ID';
 
 export const CATEGORIES_GET_ID = 'CATEGORIES_GET_ID';
 
@@ -47,6 +48,13 @@ export function getAllPosts() {
 export function getCategoriesId(id) {
   return ({
     type: CATEGORIES_GET_ID,
+    payload: {id},
+  });
+}
+
+export function getPostId(id) {
+  return ({
+    type: POST_GET_ID,
     payload: {id},
   });
 }
