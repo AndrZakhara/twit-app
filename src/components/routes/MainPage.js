@@ -64,7 +64,7 @@ class MainPage extends Component {
         </div>
       </div>
     );
-  }s
+  }
 }
 
 export default connect(

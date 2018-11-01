@@ -7,8 +7,8 @@ export default function CategoryItem(props) {
   } = props;
 
   return(
-    <div>
+    <li>
       <span onClick={() => getCategoriesId(category.id)}>{category.title}</span>
-    </div>
+    </li>
   );
 }

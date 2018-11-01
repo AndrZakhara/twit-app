@@ -8,13 +8,11 @@ export default function PostsList(props) {
   } = props;
   const post = posts.map((item) => {
     return (
-      <li>
-        <PostItem
-          key={item.id}
-          post={item}
-          getPostId={getPostId}
-        />
-      </li>
+      <PostItem
+        key={item.id}
+        post={item}
+        getPostId={getPostId}
+      />
     );
   });
 

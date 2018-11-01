@@ -7,9 +7,9 @@ export default function PostItem(props) {
   } = props;
 
   return(
-    <div onClick={()=>getPostId(post.id)}>
+    <li onClick={()=>getPostId(post.id)}>
       <h4>{post.title}</h4>
       <p>{post.body}</p>
-    </div>
+    </li>
   );
 }

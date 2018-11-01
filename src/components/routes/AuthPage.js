@@ -13,12 +13,11 @@ import { handleLogin, handleSignUp } from '../../actions/authActions';
 class AuthPage extends Component {
   render() {
     const {
-      isAuth,
       formError,
       handleLogin,
       handleSignUp,
     } = this.props;
-    console.log(isAuth);
+
     return(
       <Router>
         <div>
@@ -46,7 +45,6 @@ class AuthPage extends Component {
 
 export default connect(
   store => ({
-    isAuth: store.authForm.isAuth,
     formError: store.form,
   }),
   dispatch =>({

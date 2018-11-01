@@ -10,13 +10,11 @@ export default function CategoriesList(props) {
   const category = categories.map((item) => {
 
     return (
-      <li>
-        <CategoryItem
-          key={item.id}
-          category={item}
-          getCategoriesId={getCategoriesId}
-        />
-      </li>
+      <CategoryItem
+        key={item.id}
+        category={item}
+        getCategoriesId={getCategoriesId}
+      />
     );
   });
 
