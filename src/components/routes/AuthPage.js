@@ -14,35 +14,43 @@ class AuthPage extends Component {
   render() {
     const {
       isAuth,
+      formError,
       handleLogin,
-      handleSignUp
+      handleSignUp,
     } = this.props;
     console.log(isAuth);
     return(
       <Router>
         <div>
           <Header />
-          <h2>Auth Page</h2>
+          <h4>You are Unauthorized. <br/>Use your login or create a new account.</h4>
           <Route
             path="/auth/login"
-            render={() => <LoginPage onSubmit={handleLogin} />}
+            render={() => <LoginPage
+              onSubmit={handleLogin}
+              formError={formError}
+            />}
           />
           <Route
             path="/auth/signup"
-            render={() => <RegisterPage onSubmit={handleSignUp} />}
+            render={() => <RegisterPage
+              onSubmit={handleSignUp}
+              formError={formError}
+            />}
           />
         </div>
       </Router>
-    )
+    );
   }
 }
 
 export default connect(
   store => ({
     isAuth: store.authForm.isAuth,
+    formError: store.form,
   }),
   dispatch =>({
     handleLogin: form => dispatch(handleLogin(form)),
     handleSignUp: form => dispatch(handleSignUp(form)),
-  })
+  }),
 )(AuthPage)
