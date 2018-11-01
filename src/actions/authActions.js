@@ -8,6 +8,10 @@ export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAIL = 'SIGNUP_FAIL';
 
+export const GETUSER_REQUEST = 'GETUSER_REQUEST';
+export const GETUSER_SUCCESS = 'GETUSER_SUCCESS';
+export const GETUSER_FAIL = 'GETUSER_FAIL';
+
 export const LOGOUT = 'LOGOUT';
 
 export function handleLogin(form) {
@@ -24,14 +28,20 @@ export function handleLogin(form) {
 
     axios.post('/login', user)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
+        // getUser()(dispatch);
+        localStorage.setItem('cks_token', response.data.token);
+        return response
+
+        // localStoralocalStorage.setItem('cks_token', response.data.token);ge.setItem('cks_token', response.data.token);
+      })
+      .then(() =>{
         dispatch({
           type: LOGIN_SUCCESS,
           payload: {
             username: user.login,
           },
         });
-        localStorage.setItem('cks_token', response.data.token);
       })
       .catch((error) => {
         console.log(error);
@@ -92,22 +102,24 @@ export function handleLogout(e) {
 export function getUser() {
   return (dispatch) => {
     dispatch({
-      type: LOGIN_REQUEST,
+      type: GETUSER_REQUEST,
     });
 
     axios.get('/user')
       .then((response) => {
+        console.log('get user');
+        console.log(response.data.login);
         dispatch({
-          type: LOGIN_SUCCESS,
+          type: GETUSER_SUCCESS,
           payload: {
-            username: response.data.login,
+            username: response.data,
           },
         });
       })
       .catch((error) => {
         console.log(error);
         dispatch({
-          type: LOGIN_FAIL,
+          type: GETUSER_FAIL,
           error: true,
           payload: new Error('Authorization error'),
         });

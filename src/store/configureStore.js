@@ -8,4 +8,4 @@ import history from '../history';
 export const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(routerMiddleware(history), thunk),
-))
+));

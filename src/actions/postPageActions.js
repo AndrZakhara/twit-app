@@ -10,11 +10,8 @@ export function getPostById(id) {
     dispatch({
       type: POST_GET_BY_ID_REQUEST,
     });
-
     axios.get(`/post/${id}`)
       .then((response) => {
-        console.log('getPost response: ');
-        console.log(response.data.data);
         dispatch({
           type: POST_GET_BY_ID_FETCH,
           payload: {

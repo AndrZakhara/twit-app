@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import {
+  NavLink,
+  withRouter,
+} from 'react-router-dom';
 import Header from '../../containers/Header';
 import CategoriesList from '../CategoriesList';
 import PostsList from '../PostsList';
@@ -10,13 +13,19 @@ import {
   getCategoriesId,
   getPostId,
 } from '../../actions/mainPageActions';
+import { getUser } from '../../actions/authActions';
 import { getFilteredPostsList } from '../../selectors/getFilteredPostsList';
 
 class MainPage extends Component {
 
   componentDidMount() {
-    this.props.getCategoriesHandler();
-    this.props.getPostsHandler();
+    if(localStorage.getItem('cks_token') !== undefined) {
+      console.log(localStorage.getItem('cks_token'))
+      this.props.handleGetUser();
+      this.props.getCategoriesHandler();
+      this.props.getPostsHandler();
+    }
+
   }
 
   render() {
@@ -67,16 +76,17 @@ class MainPage extends Component {
   }
 }
 
-export default connect(
+export default withRouter(connect(
   store => ({
     categories: store.mainPage.categories,
     posts: getFilteredPostsList(store),
 
   }),
   dispatch =>({
+    handleGetUser: () => dispatch(getUser()),
     getCategoriesHandler: () => dispatch(getAllCategories()),
     getPostsHandler: () => dispatch(getAllPosts()),
     getCategoriesId: id => dispatch(getCategoriesId(id)),
     getPostId: (id => dispatch(getPostId(id)))
-  }),
-)(MainPage);
+  }), null, {pure: false},
+)(MainPage));

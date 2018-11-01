@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
+  withRouter,
   Route,
   Redirect,
   Switch,
@@ -12,7 +13,7 @@ import MainPage from '../components/routes/MainPage';
 import PostPage from '../components/routes/PostPage';
 import AuthorsPage from '../components/routes/AuthorsPage';
 import MyPage from '../components/routes/MyPage';
-import {getUser} from '../actions/authActions';
+import { getUser } from '../actions/authActions';
 import ProtectedRoute from '../components/routes/ProtectedRoute';
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.handleGetUser();
+    console.log('app_ get_user')
   }
 
 
@@ -67,5 +69,5 @@ export default connect(
   }),
   dispatch =>({
     handleGetUser: () => dispatch(getUser()),
-  }),
+  }), null, {pure: false},
 )(App);

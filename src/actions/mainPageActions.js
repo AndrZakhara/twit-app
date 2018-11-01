@@ -1,4 +1,5 @@
 import axios from '../axios';
+// import { push } from 'react-router-redux';
 
 export const CATEGORIES_REQUEST = 'CATEGORIES_REQUEST';
 export const CATEGORIES_FETCH = 'CATEGORIES_FETCH';
@@ -29,7 +30,6 @@ export function getAllCategories() {
 }
 
 export function getAllPosts() {
-
   return (dispatch) => {
     dispatch({
       type: POST_REQUEST,
